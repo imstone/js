@@ -1,0 +1,43 @@
+# 原型
+
+## 一点铺垫
+> 首先要弄清楚JS引用型的概念
+```javascript { .theme-peacock }
+var info = {
+	age: 12,
+	jon: 'fe'
+}
+var obj = {
+	name: 'xiaoming',
+	info: info // 我们看到getNameFn引用的是函数。
+}
+
+```
+
+## 为什么有原型
+> 原型里有很多公用方法，当我们声明一个对象、数组、字符串等时候就会自动去原型上找这些公共方法。不用在每个实例上都实现一遍这些公共方法，比如toString()方法等。
+
+## 举个例子
+> 任何函数都有一个属性prototype指向一个对象
+```javascript { .theme-peacock }
+var superObj = function(){
+}
+superObj.prototype => {
+}
+new superObj()
+```
+
+### for...in 查找整个原型链
+
+### 5.1.2属性设置和屏蔽
+1. 普通属性没有设置只读，会产生屏蔽属性。
+2. 如果属性标识了只读，会忽略，不会赋值。
+3. 如果这个值是setter，一定会调用这个setter。不会赋值。
+> 上述只影响 "="  赋值.
+
+## 5.2 类
+
+### 5.2.1
+1. 所有函数都会有prototype属性，指向另一个对象。
+2. 这个对象只在被New调用的时候被创建，最后被关联到函数的portotype，
+3. new会劫持所有被new调用的函数

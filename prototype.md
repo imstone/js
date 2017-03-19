@@ -37,15 +37,38 @@ new superObj()
 
 ## 5.2 类
 
-### 5.2.1 原型
+##### 构造函数 => new 构造函数 => {  }
+
+
+```javascript { .theme-peacock }
+
+var a= {}
+a.constructor
+Object() { [native code] }
+
+function b (){}
+b.constructor
+Function() { [native code] }
+
+b.prototype
+Object {}
+
+```
+### 5.2.1 原型对象
 > 所有函数都会有prototype （原型） [ˈproʊtətaɪp] 属性，指向另一个对象。
 
 这个对象包含了函数的一些公共方法。
 
-### 5.2.2 构造
+### 5.2.2 构造函数
  
-> 所有对象都有一个constructor （构造）[kən'strʌktə] 属性，指向这个对象的构造函数，因为一个对象是肯定是一个函数创建的，
+> 所有对象都有一个constructor （构造）[kən'strʌktə] 属性，指向这个对象的构造函数，因为一个对象是肯定是一个函数创建的，  
+
 > JS 是面向对象最友好的语言，因为很少有语言可以不用过类，直接通过字面量创建。
-> 
+
+
+
+
+
+
 2. 这个对象只在被New调用的时候被创建，最后被关联到函数的portotype，
 3. new会劫持所有被new调用的函数

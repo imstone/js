@@ -44,12 +44,15 @@ new superObj()
 
 var a= {}
 a.constructor
+// 所以对象的构造函数就是Object
 Object() { [native code] }
 
 function b (){}
 b.constructor
+// 函数的构造函数就是Function
 Function() { [native code] }
 
+// 对象没有prototype
 b.prototype
 Object {}
 
@@ -57,11 +60,32 @@ Object {}
 ### 5.2.1 原型对象
 > 所有函数都会有prototype （原型） [ˈproʊtətaɪp] 属性，指向另一个对象。
 
-这个对象包含了函数的一些公共方法。
+
+ \_\_proto\_\_ 是内部的属性，是原型链的根本，当一个使用一个变量时候在局部变量中找不到这个变量就会去访问这个对象的\_\_proto\_\_属性.
+这个\_\_proto\_\_会指向另外一个对象，这个对象本身也有自己的\_\_proto\_\_，这样原型链就形成了。
+ ```javascript { .theme-peacock }
+ var my = function () {}
+undefined
+var fun = my.__proto__
+undefined
+fun
+() {}
+var obj = fun.__proto__ 
+undefined
+obj
+Object {}
+var who = obj.__proto__
+undefined
+who
+null
+ ```
+
+这个对象称为这个函数的原型，
 
 ### 5.2.2 构造函数
  
-> 所有对象都有一个constructor （构造）[kən'strʌktə] 属性，指向这个对象的构造函数，因为一个对象是肯定是一个函数创建的，  
+> 所有对象都有一个constructor （构造）[kən'strʌktə] 属性，指向这个对象的构造函数，因为一个对象是肯定是一个函数创建的。
+> 包含对象、函数、字符串、数字、布尔值等等
 
 > JS 是面向对象最友好的语言，因为很少有语言可以不用过类，直接通过字面量创建。
 

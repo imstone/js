@@ -85,7 +85,7 @@ null
 ```javascript { .theme-peacock }
 var Fe = function () {}
 var xiaowu = new Fe()
-xiaowu.\_\_proto\_\_ === Fe.prototype
+xiaowu.__proto__ === Fe.prototype
 
 
 

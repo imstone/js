@@ -58,10 +58,23 @@ Object {}
 
 ```
 ### 5.2.1 原型对象
-> 所有函数都会有prototype （原型） [ˈproʊtətaɪp] 属性，指向另一个对象。
+#### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
+
+ - [[prototype]] ：ECMAScript 规定每个对象（包括函数、数组、字符串等null除外）都有[[prototype]]属性，这个函数是内部属性，看不到的。
+ -  \_\_proto\_\_ ：各家游览器在javascript的实现就是\_\_proto\_\_这个属性（支持IE11以上）。
+ - prototype ：prototype（原型） [ˈproʊtətaɪp]是函数的独有属性，其他类型没有，这个属性是给构造函数用的。
+
+#### 你可以理解这个3个名词都指向的是原型，只是表述或者用的地方不同而已。
+
+1. \_\_proto\_\_ 是 [[prototype]] 的实现，\_\_proto\_\_ 可以在游览器中看到。
+2. \_\_proto\_\_  在所有的实例中都存在，除了null（后面我们会说到）。
+3. 不过函数中除了\_\_proto\_\_ 还有一个 prototype，（函数也是对象）
 
 
-\_\_proto\_\_  IE 11才支持
+> 所以我们可以忽略 [[prototype]] 用\_\_proto\_\_代替就好了。
+
+
+
  \_\_proto\_\_ 是内部的属性，是原型链的根本，当一个使用一个变量时候在局部变量中找不到这个变量就会去访问这个对象的\_\_proto\_\_属性.
 这个\_\_proto\_\_会指向另外一个对象，这个对象本身也有自己的\_\_proto\_\_，这样原型链就形成了。
 ```javascript { .theme-peacock }
@@ -77,10 +90,17 @@ Object {}
 var who = obj.__proto__
 who
 null
+
+my.__proto__.__proto__.__proto__ === null
+
 ```
-我们看到上面的例子，当我们在一个函数内去调用一个变量时，整个取值过程会沿着\_\_proto\_\_一直找到Object的\_\_proto\_\_。再往上就是null了
+我们看到上面的例子，当我们在一个函数内去调用一个变量时，整个取值过程会沿着\_\_proto\_\_一直找到Object的\_\_proto\_\_。再往上就是null了，因为null本身没有\_\_proto\_\_，所以查找到此为止。
 
 这个是最根本的JS基础，不涉及高等级的概念。
+
+
+貌似整个过程和prototype没什么关系。
+如果我们这样理解：\_\_proto\_\_是整个机制的内部属性，不想对外暴露，但是提供一个接口可以让我们更改原型链。而这个接口就是prototype，这样是不是就很好理解他俩的关系了呢？
 
 ```javascript { .theme-peacock }
 var Fe = function () {}
@@ -93,9 +113,6 @@ xiaowu.__proto__ === Fe.prototype
 
 
 
-貌似整个过程和prototype没什么关系。
-
-如果我们这样理解：\_\_proto\_\_是整个机制的内部属性，不想对外暴露，但是提供一个接口可以让我们更改原型链。而这个接口就是prototype，这样是不是就很好理解他俩的关系了呢？
 
 这个对象称为这个函数的原型，
 
@@ -113,3 +130,8 @@ xiaowu.__proto__ === Fe.prototype
 
 2. 这个对象只在被New调用的时候被创建，最后被关联到函数的portotype，
 3. new会劫持所有被new调用的函数
+
+
+```javascript { .theme-peacock }
+//按tab键跳到这里
+```

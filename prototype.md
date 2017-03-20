@@ -1,15 +1,10 @@
 # 原型
 
 ## 1. 原型对象
-
-#### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
-
- - [[prototype]] ：ECMAScript 规定的内部属性，存在于每个对象中，对外不可见。
- -  \_\_proto\_\_ ：各家游览器为了访问[[prototype]]实现的属性（支持IE11以上）。
- - prototype ：prototype（原型） [ˈproʊtətaɪp]是函数的独有属性，其他类型没有，这个属性是给构造函数用的。
- 
+> 俗话说JS万物皆对象，所以下面我们说的对象就包含了字符串、函数、数组、对象等
 #### 原型对象的作用
  原型对象上存放了很多公用方法，供各个对象使用。
+ 下面字符串的 length属性和search方法都是存在字符串的原型对象上的，这样我们所有的字符串都可以使用这些属性和方法了。
 ``` javascript { .theme-peacock }
 var name = 'xiaowu'// 声明一个变量，赋值一个字符串。
 name.length // 返回字符串的长度
@@ -17,6 +12,14 @@ name.length // 返回字符串的长度
 name.search('w') // 返回第一个w在字符串的位置
 4
 ```
+
+#### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
+
+ - [[prototype]] ：ECMAScript 规定的内部属性，存在于每个对象中，对外不可见。
+ -  \_\_proto\_\_ ：各家游览器为了访问[[prototype]]实现的属性（支持IE11以上）。
+ - prototype ：prototype（原型） [ˈproʊtətaɪp]是函数的独有属性，其他类型没有，这个属性是给构造函数用的。
+ 
+
 
 #### 你可以理解这个3个名词都指向的是原型，只是表述或者用的地方不同而已。
 

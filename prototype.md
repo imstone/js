@@ -1,8 +1,8 @@
 # 原型
 
-## 1. 即
+
 > 原型看似平时工作中不会用到，其实我们工作中一直在用原型，只是大家不知道而已。
-#### 工作中用到的原型
+### 原型对象
  
 
 我们看下面的代码，当我们定义了两个函数并用console.log打印一些信息时，其实job变量没有在函数内声明，而是声明在函数外部。但是通过作用域概念，函数是可以拿到函数外部的变量的。这样我们就可以把一些公共变量声明在2个函数共同的外部，达到声明一个变量，给两个函数使用的目的。**这个是作用域的强大之处**。
@@ -62,22 +62,95 @@ var fe= {
 	getInfo: function(){
 		console.log(this.team + '的' + this.job)
 	}
+}
 xiaowu.getInfo() // 国际化的前端
 stone.getInfo() // 商业安全的前端
 ```
 这里讲怎么设置一个对象的原型对象，就是让一个对象在自己的属性和方法里找不到时，去另一个对象查找的对象。
-这里我们引出了另一个属性** \_\_proto\_\_ **，我们上面讲了[[prototype]]是内部属性，即看不到也没法设置。但是各个游览器提供给我们一个属性叫做** \_\_proto\_\_ **， 我们可以用这个属性查看[[prototype]]和设置它。
+这里我们引出了另一个属性**\_\_proto\_\_**，我们上面讲了[[prototype]]是内部属性，即看不到也没法设置。但是各个游览器提供给我们一个属性叫做**\_\_proto\_\_**， 我们可以用这个属性查看[[prototype]]和设置它。其实我建议从这里开始忘记[[prototype]]，把\_\_proto\_\_ 想象为[[prototype]]就好了，毕竟多一个名词没啥好的，况且这个属性还看不到，只能通过其他属性或者方法去查看设置。
+下面的代码很简单，就是简单的把两个对象的原型对象设置为拥有公共方法和属性的fe，这样当xiaowu和stone在调用自己不存在的属性和方法时就可以顺着原型找到原型对象fe上了。就可以从上面拿到自己想要的属性和方法。
+> \_\_proto\_\_ 只支持IE11以及以上其他游览器都支持，ES6提供了更好的方法。大家可以自己查阅。
 
 ``` javascript { .theme-peacock }
 xiaowu.__proto__ = fe;
 stone.__proto__ = fe;
+```
+
+### 原型链
+
+> 我们知道作用域一直会往外层作用域查找，直到查到最外层的window，这个叫做作用域链。那么原型也是有这个概念的，叫做原型链。
+
+
+还是看下面这段代码的分割线上一部分，如果我们查找工作地址这个方法想查看stone的工作地址，显然在原型对象fe内是没有工作地址这个属性的。怎么办呢？仔细想下我们怎么称呼fe？是不是叫做原型对象？所以原型对象也是一个对象，是对象就都用原型，那么如果我给原型对象的原型指到一个有工作地点的对象上呢？
+看下面代码的分割线的下一部分，我们把stone的原型对象fe的原型对象设置为baidu了这样stone就可以通过自己的原型找到自己的原型对象fe，在fe上找不到还可以通过fe的原型找到fe的原型对象baidu在他上面找到了工作地点。这样原型的就连成链状，俗称原型链。
+
+```javascript { .theme-peacock }
+var xiaowu = {
+	team: '国际化'
+}
+var stone = {
+	team: '商业安全'
+}
+
+var fe= {
+	job: '前端',
+	getInfo: function(){
+		console.log(this.team + '的' + this.job)
+	}
+}
+xiaowu.__proto__ = fe;
+stone.__proto__ = fe;
+
+// stone.getWorkAddress()
+
+// 看完上面的解释再看下面这段代码。
+var baidu= {
+	address: '后厂村路，百度科技园',
+	getWorkAddress: function(){
+		return this.address
+	}
+}
+
+fe.__proto__ = baidu;
+
+stone.getWorkAddress()
 
 ```
 
+在下面的例子更能形象表现原型链，我们看到 \_\_proto\_\_  已经连成串了，其实还可以增加很多。
+xiaowu 的原型的原型就是对象baidu
 
+```javascript { .theme-peacock }
+xiaowu.__proto__.__proto__ === baidu
+// 返回 true
+```
 
+### 默认原型
 
+我相信很多聪明好奇的同学已经忍不敲出下面的代码了，既然是原型链，那么我看看baidu的原型对象是啥，我都没给baidu这个对象设置原型对象。结果打印出了一个对象，并不是我们肯能认为的空之类的东西，我们点开这个输出，发现一大堆的方法。
+也许你猜到了，是的如果我们不设置一个对象的原型对象他会有一个自己的默认原型对象，并且这个对象拥有很多对象的公共方法，比如toString()等方法。
 
+```javascript { .theme-peacock }
+xiaowu.__proto__.__proto__.__proto__
+// Object {}
+// constructor: Object()
+// hasOwnProperty: hasOwnProperty()
+// toString: toString()
+/// valueOf: valueOf()get 
+```
+
+所以你们又猜到了,我们可以直接调用xiaowu.toString(),打印了如下信息。对象的toString()方法可以打印出对象的类型。
+
+```javascript { .theme-peacock }
+xiaowu.toString();
+// "[object Object]"
+```
+
+接下来我们继续接力原型链,我们再加一个\_\_proto\_\_， 这次打印出来的就是null了。这就到头了，当原型链找到null时候就代表原型链到头了，因为null没有原型。
+```javascript { .theme-peacock }
+xiaowu.__proto__.__proto__.__proto__.__proto__
+// null
+```
 #### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
 
  - [[prototype]] ：ECMAScript 规定的内部属性，存在于每个对象中，对外不可见。

@@ -2,8 +2,11 @@
 
 ## 1. 即
 > 原型看似平时工作中不会用到，其实我们工作中一直在用原型，只是大家不知道而已。
-> #### 工作中用到的原型
+#### 工作中用到的原型
+ 
+
 我们看下面的代码，当我们定义了两个函数并用console.log打印一些信息时，其实job变量没有在函数内声明，而是声明在函数外部。但是通过作用域概念，函数是可以拿到函数外部的变量的。这样我们就可以把一些公共变量声明在2个函数共同的外部，达到声明一个变量，给两个函数使用的目的。**这个是作用域的强大之处**。
+
 ``` javascript { .theme-peacock }
 var job = '前端';
 function xiaowu() {
@@ -14,10 +17,30 @@ function stone() {
 	var team = '商业安全'; 
 	console.log(team + '的' +  job)
 }
-
 xiaowu() // 国际化的前端
 stone() // 商业安全的前端
+```
 
+我们把上面的代码用对象的方式再写一遍，我们发现，虽然整体代码结构清晰很多，但是出现了大量重复代码。比如job没法公用了，并且每个对象出现了一个getInfo去打印信息。我们第一反映肯定是，这个肯定需要优化。
+
+``` javascript { .theme-peacock }
+var xiaowu = {
+	team: '国际化',
+	job: '前端',
+	getInfo: function(){
+		console.log(this.team + '的' + this.job)
+	}
+}
+var stone = {
+	team: '商业安全',
+	job: '前端',
+	getInfo: function(){
+		console.log(this.team + '的' + this.job)
+	}
+}
+
+xiaowu.getInfo() // 国际化的前端
+stone.getInfo() // 商业安全的前端
 ```
 
 #### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype

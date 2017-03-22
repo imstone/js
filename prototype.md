@@ -43,6 +43,29 @@ xiaowu.getInfo() // 国际化的前端
 stone.getInfo() // 商业安全的前端
 ```
 
+对象是不是也有类似作用域的机制，可以把公用部分单独提出去呢？
+> 虽然JS是Brendan Eich 用了仅仅十天就发明的语言，但是还是有这个机制的。
+
+所有的对象都有一个内部属性[[prototype]] (原型 [ˈproʊtətaɪp])，当对象去查找自己的属性或者方法时，如果没找到，就会取查询[[prototype]]，这个属性引用了一个对象， 我们称之为**原型对象**。
+
+所以当我们把这些共有的属性和方法都放到这个所谓的**原型对象**上，是不是就可以达到我们上面所设想的，把公共属性和方法抽离出来呢？看下面代码
+``` javascript { .theme-peacock }
+var xiaowu = {
+	team: '国际化'
+}
+var stone = {
+	team: '商业安全'
+}
+
+var fe= {
+	job: '前端',
+	getInfo: function(){
+		console.log(this.team + '的' + this.job)
+	}
+xiaowu.getInfo() // 国际化的前端
+stone.getInfo() // 商业安全的前端
+```
+
 #### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
 
  - [[prototype]] ：ECMAScript 规定的内部属性，存在于每个对象中，对外不可见。

@@ -13,7 +13,7 @@
 
 我们看下面的代码，当我们定义了两个函数并用console.log打印一些信息时，其实job变量没有在函数内声明，而是声明在函数外部。但是通过作用域概念，函数是可以拿到函数外部的变量的。这样我们就可以把一些公共变量声明在2个函数共同的外部，达到声明一个变量，给两个函数使用的目的。**这个是作用域的强大之处**。
 
-``` javascript { .theme-peacock } 
+``` javascript { .theme-peacock }
 var job = '前端';
 function xiaowu() {
 	var team = '国际化';
@@ -157,6 +157,17 @@ xiaowu.toString();
 xiaowu.__proto__.__proto__.__proto__.__proto__
 // null
 ```
+
+#### 字符串、数值、布尔等基本类型
+
+基本类型在调用
+
+
+
+
+
+
+
 #### 我们先理清下面几个名词，[[prototype]]、\_\_proto\_\_、prototype
 
  - [[prototype]] ：ECMAScript 规定的内部属性，存在于每个对象中，对外不可见。

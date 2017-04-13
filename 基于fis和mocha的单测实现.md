@@ -1,5 +1,5 @@
 
-```jvascript
+```javascript
 
 test.set('project.files', ['./test/**']);
 

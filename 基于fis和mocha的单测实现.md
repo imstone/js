@@ -70,7 +70,7 @@ test.match('**.js', {
 });
 ```
 
-#### 针对FIS的commonjs规范，修改require
+#### 针对BABLE，修改require
 > FIS没有针对JS里require的资源定位，所以我们需要对经过bable转义过的require地址做一些处理。
 
 ```
@@ -87,6 +87,31 @@ test.hook('nodejs');
   content = content.replace(/require\(\'_mock/gi , 'require\(\''+path+'/_mock')
   content = content.replace(/require\(\'test/gi , 'require\(\''+path+'/testout/test')
 ```
+### 针对一些框架不输出
+> 测试用例和需要测试的JS文件里会有一些框架引用，我们要忽略这些框架的输出。
+``` javascript
+test.match('chai/**', {
+    release: false
+});
+test.match('axios/**', {
+    release: false
+});
+test.match('lodash/**', {
+    release: false
+});
+```
+```
+test.match('**.js', {
+    isMod: false,
+    deploy: [
+        fis.plugin('local-deliver', {
+            to: 'testout'
+        })
+    ]
+});
+
+```
+
 
 
 ### 整体fis3配置

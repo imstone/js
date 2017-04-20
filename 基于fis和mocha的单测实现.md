@@ -119,7 +119,7 @@ test.match('**.js', {
 });
 ```
 
-### 测试框架 Mocha 整合
+### 测试框架 Mocha和断言库chai 整合
 >  引入要测试文件,
 #### 针对mutation的测试
 ```javascript

@@ -117,27 +117,22 @@ test.match('**.js', {
 ### 整体fis3配置
 ```javascript
 var test = fis.media('test');
-test.set('project.files', ['./test/**']);
-
-test.match('**.js', {
-    parser: fis.plugin('babel-5.x'),
-    packTo: 'static/pkg/folderA.js'
+test.set('project.files', ['./test/**',  './_mock/**']);
+test.match('chai/**', {
+    release: false
+});
+test.match('axios/**', {
+    release: false
+});
+test.match('lodash/**', {
+    release: false
 });
 test.match('**.js', {
     parser: fis.plugin('babel-5.x'),
-    packTo: 'static/pkg/folderA.js'
 });
-test.match('::package', {
-    // prepackager: fis.plugin('mocha'),
-    postpackager: fis.plugin('loader', {
-        allInOne: true
-    })
-});
-test.match('mod-node.js', {
-    packOrder: -100,
-    isMod: false
-});
-test.match('**', {
+test.hook('nodejs');
+test.match('**.js', {
+    isMod: false,
     deploy: [
         fis.plugin('local-deliver', {
             to: 'testout'

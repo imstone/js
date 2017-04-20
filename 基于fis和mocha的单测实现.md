@@ -110,6 +110,7 @@ test.match('**.js', {
 ```
 test.hook('nodejs');
 ```
+##### 下面是 fis3-hook-nodejs这个插件的源码
 ``` javascript
   var content = file.getContent();
   var path = file.fullname.split(file.subpath)[0];

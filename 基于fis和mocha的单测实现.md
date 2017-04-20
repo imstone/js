@@ -100,6 +100,8 @@ test.match('lodash/**', {
     release: false
 });
 ```
+### 将单测文件和需要测试的文件输出到单独文件夹。
+> 经过bable转义和修改require地址的JS文件输出到一个单独文件夹，这些文件就是可测文件了
 ```
 test.match('**.js', {
     isMod: false,

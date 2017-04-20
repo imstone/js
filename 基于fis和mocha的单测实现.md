@@ -55,6 +55,13 @@ assert.lengthOf(tea.flavors, 3);
 4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
 
 
+## 目录和文件名约定
+#### 测试文件
+测试文件目录和源文件src平行的test目录下，test目录下又分为unit和e2e测试文件夹，以及README.md
+
+
+
+
 ##  FIS3 环境配置
 #### 针对单测单独运行的FIS配置
 > 使用环境查询
@@ -87,7 +94,7 @@ test.hook('nodejs');
   content = content.replace(/require\(\'_mock/gi , 'require\(\''+path+'/_mock')
   content = content.replace(/require\(\'test/gi , 'require\(\''+path+'/testout/test')
 ```
-### 针对一些框架不输出
+#### 针对一些框架不输出
 > 测试用例和需要测试的JS文件里会有一些框架引用，我们要忽略这些框架的输出。
 ``` javascript
 test.match('chai/**', {
@@ -100,7 +107,7 @@ test.match('lodash/**', {
     release: false
 });
 ```
-### 将单测文件和需要测试的文件输出到单独文件夹。
+#### 将单测文件和需要测试的文件输出到单独文件夹。
 > 经过bable转义和修改require地址的JS文件输出到一个单独文件夹，这些文件就是可测文件了
 ```
 test.match('**.js', {

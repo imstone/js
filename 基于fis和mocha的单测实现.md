@@ -111,6 +111,7 @@ test.match('**.js', {
 test.hook('nodejs');
 ```
 ##### 下面是 fis3-hook-nodejs这个插件的源码
+> 主要针对一些require的相对路径转换为绝对路径
 ``` javascript
   var content = file.getContent();
   var path = file.fullname.split(file.subpath)[0];

@@ -97,10 +97,7 @@ var test = fis.media('test');
 ```
 
 ### 使用ES6语法
-
-
-> 需要测试的JS文件和单测文件使用ES6编码
-使用bable转码为es5，
+> 需要测试的JS文件和单测文件使用ES6编码，使用bable转码为es5。
 ```
 test.match('**.js', {
     parser: fis.plugin('babel-5.x'),

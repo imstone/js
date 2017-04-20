@@ -104,12 +104,20 @@ test.match('**.js', {
 });
 ```
 
-#### 针对FIS的自动资源定位
-> 需要测试的JS文件和单测文件使用ES6编码，使用bable转码为es5。
+#### 针对FIS的commonjs规范，修改require
+> FIS没有针对JS里require的资源定位，所以我们需要对经过bable转义过的require地址做一些处理。
+
 ```
-test.match('**.js', {
-    parser: fis.plugin('babel-5.x'),
-});
+test.hook('nodejs');
+```
+``` javascript
+  var content = file.getContent();
+  var path = file.fullname.split(file.subpath)[0];
+  content = content.replace(/require\(\'src\/js\/api/gi , 'require\(\''+path+'/testout/test/unit/_tools/api');
+  content = content.replace(/require\(\'src/gi , 'require\(\''+path+'/testout/src');
+  content = content.replace(/require\(\'node_modules/gi , 'require\(\''+path+'/node_modules')
+  content = content.replace(/require\(\'_mock/gi , 'require\(\''+path+'/_mock')
+  content = content.replace(/require\(\'test/gi , 'require\(\''+path+'/testout/test')
 ```
 
 ## 让JS文件可以在node下运行可

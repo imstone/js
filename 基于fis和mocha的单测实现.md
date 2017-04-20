@@ -89,14 +89,14 @@ test.match('**', {
 4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
 
 
-##  生成可运行的JS文件
-### 针对单测单独运行的FIS配置
+###  生成可运行的JS文件
+#### 针对单测单独运行的FIS配置
 > 使用环境查询
 ```
 var test = fis.media('test');
 ```
 
-### 使用ES6语法
+#### 使用ES6语法
 > 需要测试的JS文件和单测文件使用ES6编码，使用bable转码为es5。
 ```
 test.match('**.js', {

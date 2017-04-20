@@ -8,8 +8,8 @@ Mocha是基于node的测试框架，
 <img src="http://cldup.com/xFVFxOioAU.svg" width = "100" height = "100" style="float:left"/>
 <img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "90" height = "100" />
 
-### Mocha
->  测试框架
+### 测试框架 Mocha
+>  就是运行测试的框架，
 
 
 Should

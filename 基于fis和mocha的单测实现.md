@@ -12,48 +12,6 @@
 <img src="http://cldup.com/xFVFxOioAU.svg" width = "100" height = "100" style="float:left"/>
 <img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "90" height = "100" />
 
-### 测试框架 Mocha
->  就是运行测试的框架，
-
-
-Should
-```
-chai.should();
-foo.should.be.a('string');
-foo.should.equal('bar');
-foo.should.have.lengthOf(3);
-tea.should.have.property('flavors')
-  .with.lengthOf(3);
-```
-                
-Visit Should Guide →
-Expect
-```
-var expect = chai.expect;
-
-expect(foo).to.be.a('string');
-expect(foo).to.equal('bar');
-expect(foo).to.have.lengthOf(3);
-expect(tea).to.have.property('flavors')
-  .with.lengthOf(3);
-```              
-
-Assert
-```
-var assert = chai.assert;
-
-assert.typeOf(foo, 'string');
-assert.equal(foo, 'bar');
-assert.lengthOf(foo, 3)
-assert.property(tea, 'flavors');
-assert.lengthOf(tea.flavors, 3);
-```
-
-1. 行覆盖率（line coverage）：是否每一行都执行了？
-2. 函数覆盖率（function coverage）：是否每个函数都调用了？
-3. 分支覆盖率（branch coverage）：是否每个if代码块都执行了？
-4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
-
 
 ## 目录和文件名约定
 #### 测试目录约定
@@ -134,8 +92,6 @@ test.match('**.js', {
 
 ```
 
-
-
 ### 整体fis3配置
 ```javascript
 var test = fis.media('test');
@@ -162,3 +118,63 @@ test.match('**.js', {
     ]
 });
 ```
+
+### 测试框架 Mocha 整合
+>  引入要测试文件,
+#### 针对mutation的测试
+```javascript
+it('mutations-GET_DNS_RECORDS', () => {
+        // 模拟状态
+        const _state = {
+            all: result,
+            info: {}
+        };
+        
+        // 应用 mutation
+        GET_DNS_RECORDS(inlineState, inlineDnsRecords.result);
+        // 断言结果
+        expect(inlineState).to.deep.equal(_state)
+    });
+```
+
+
+
+Should
+```
+chai.should();
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.lengthOf(3);
+tea.should.have.property('flavors')
+  .with.lengthOf(3);
+```
+                
+Visit Should Guide →
+Expect
+```
+var expect = chai.expect;
+
+expect(foo).to.be.a('string');
+expect(foo).to.equal('bar');
+expect(foo).to.have.lengthOf(3);
+expect(tea).to.have.property('flavors')
+  .with.lengthOf(3);
+```              
+
+Assert
+```
+var assert = chai.assert;
+
+assert.typeOf(foo, 'string');
+assert.equal(foo, 'bar');
+assert.lengthOf(foo, 3)
+assert.property(tea, 'flavors');
+assert.lengthOf(tea.flavors, 3);
+```
+
+1. 行覆盖率（line coverage）：是否每一行都执行了？
+2. 函数覆盖率（function coverage）：是否每个函数都调用了？
+3. 分支覆盖率（branch coverage）：是否每个if代码块都执行了？
+4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
+
+

@@ -49,37 +49,6 @@ assert.property(tea, 'flavors');
 assert.lengthOf(tea.flavors, 3);
 ```
 
-
-```javascript
-
-test.set('project.files', ['./test/**']);
-
-test.match('**.js', {
-    parser: fis.plugin('babel-5.x'),
-    packTo: 'static/pkg/folderA.js'
-});
-test.match('**.js', {
-    parser: fis.plugin('babel-5.x'),
-    packTo: 'static/pkg/folderA.js'
-});
-test.match('::package', {
-    // prepackager: fis.plugin('mocha'),
-    postpackager: fis.plugin('loader', {
-        allInOne: true
-    })
-});
-test.match('mod-node.js', {
-    packOrder: -100,
-    isMod: false
-});
-test.match('**', {
-    deploy: [
-        fis.plugin('local-deliver', {
-            to: 'testout'
-        })
-    ]
-});
-```
 1. 行覆盖率（line coverage）：是否每一行都执行了？
 2. 函数覆盖率（function coverage）：是否每个函数都调用了？
 3. 分支覆盖率（branch coverage）：是否每个if代码块都执行了？
@@ -119,7 +88,35 @@ test.hook('nodejs');
   content = content.replace(/require\(\'test/gi , 'require\(\''+path+'/testout/test')
 ```
 
-## 让JS文件可以在node下运行可
-## 让JS文件可以在node下运行
-```javascript运行
+
+### 整体fis3配置
 ```javascript
+var test = fis.media('test');
+test.set('project.files', ['./test/**']);
+
+test.match('**.js', {
+    parser: fis.plugin('babel-5.x'),
+    packTo: 'static/pkg/folderA.js'
+});
+test.match('**.js', {
+    parser: fis.plugin('babel-5.x'),
+    packTo: 'static/pkg/folderA.js'
+});
+test.match('::package', {
+    // prepackager: fis.plugin('mocha'),
+    postpackager: fis.plugin('loader', {
+        allInOne: true
+    })
+});
+test.match('mod-node.js', {
+    packOrder: -100,
+    isMod: false
+});
+test.match('**', {
+    deploy: [
+        fis.plugin('local-deliver', {
+            to: 'testout'
+        })
+    ]
+});
+```

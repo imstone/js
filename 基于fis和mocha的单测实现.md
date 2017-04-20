@@ -1,3 +1,7 @@
+## 引子和说明
+1. 本文介绍的是基于FIS3针对VUEX的单测环境搭建，也可以作为其他框架的参考。
+2. 不再详细介绍各个框架的详细用法，只是针对各个框架在FIS3环境下的整合。
+
 
 ## 框架介绍
 1. Mocha [ˈmoʊkə]摩卡
@@ -83,3 +87,26 @@ test.match('**', {
 2. 函数覆盖率（function coverage）：是否每个函数都调用了？
 3. 分支覆盖率（branch coverage）：是否每个if代码块都执行了？
 4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
+
+
+##  生成可运行的JS文件
+### 针对单测单独运行的FIS配置
+> 使用环境查询
+```
+var test = fis.media('test');
+```
+
+### 使用ES6语法
+
+
+> 需要测试的JS文件和单测文件使用ES6编码
+使用bable转码为es5，
+```
+test.match('**.js', {
+    parser: fis.plugin('babel-5.x'),
+});
+```
+## 让JS文件可以在node下运行可
+## 让JS文件可以在node下运行
+```javascript运行
+```javascript

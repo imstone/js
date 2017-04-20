@@ -59,6 +59,16 @@ assert.lengthOf(tea.flavors, 3);
 #### 测试文件
 测试文件目录和源文件src平行的test目录下，test目录下又分为unit和e2e测试文件夹，以及README.md
 
+-/           根目录
+----|src         业务相关的 JavaScript 代码目录
+        |____ JS              需要测试的JS文件
+        |____ other
+      ....
+----|test         测试相关的 JavaScript 代码目录
+        |____ unit             单元测试文件目录
+                |____ JS              从这里以下按照src下的JS文件夹一一对应写单元测试文件
+        |____ e2e              功能测试文件目录
+        |____ README.md        功能测试文件目录
 
 
 

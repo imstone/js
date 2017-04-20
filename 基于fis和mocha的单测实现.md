@@ -3,7 +3,7 @@
 Mocha是基于node的测试框架，
 
 <img src="http://cldup.com/xFVFxOioAU.svg" width = "100" height = "100" alt="图片名称" align=center />
-<img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "100" height = "100" alt="图片名称" align=center />
+<img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "100" height = "120" alt="图片名称" align=center />
 
 
 ```javascript

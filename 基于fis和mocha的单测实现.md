@@ -130,7 +130,7 @@ it('测试mutations中的SET-SITE', () => {
             info: {}
         };
         // 应用 mutation
-        SET-SITE(inlineState, inlineDnsRecords.result);
+        SET-SITE(state, result);
         // 断言结果
         expect(inlineState).to.deep.equal(_state)
 });

@@ -121,6 +121,15 @@ test.match('**.js', {
 
 ### 测试框架 Mocha和断言库chai 整合
 >  引入要测试文件,
+#### 执行每个单测前进行state和mock数据的重置
+let inlineData= null;
+let inlineState = null;
+beforeEach(function() {
+    // 每个测试用例执行前都重新cloe一份新的数据
+    inlineData = _.cloneDeep(data);
+    inlineState = _.cloneDeep(state);
+});
+
 #### 针对mutation的测试
 ```javascript
 it('测试mutations中的SET-SITE', () => {

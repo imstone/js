@@ -32,7 +32,7 @@ test.match('**', {
     ]
 });
 ```
-语句覆盖：保证每一个语句都执行到了
-判定覆盖（分支覆盖）：保证每一个分支都执行到
-条件覆盖：保证每一个条件都覆盖到true和false（即if、while中的条件语句）
-路径覆盖：保证每一个路径都覆盖到
+行覆盖率（line coverage）：是否每一行都执行了？
+函数覆盖率（function coverage）：是否每个函数都调用了？
+分支覆盖率（branch coverage）：是否每个if代码块都执行了？
+语句覆盖率（statement coverage）：是否每个语句都执行了？

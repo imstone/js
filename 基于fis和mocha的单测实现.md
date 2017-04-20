@@ -56,7 +56,7 @@ assert.lengthOf(tea.flavors, 3);
 
 
 ## 目录和文件名约定
-#### 测试文件
+#### 测试目录约定
 测试文件目录和源文件src平行的test目录下，test目录下又分为unit和e2e测试文件夹，以及README.md
 ```
 -/           根目录
@@ -68,9 +68,11 @@ assert.lengthOf(tea.flavors, 3);
         |____ unit             单元测试文件目录
                 |____ JS              从这里以下按照src下的JS文件夹一一对应写单元测试文件
         |____ e2e              功能测试文件目录
-        |____ README.md        功能测试文件目录
+        |____ README.md        
 ```
-
+#### 测试文件约定
+测试文件的目录必须与要测试的文件一一对应，包括目录结构和文件名。
+文件名必须以test.js结尾。例如: site.test.js 对应要测试的文件就是site.js
 
 ##  FIS3 环境配置
 #### 针对单测单独运行的FIS配置

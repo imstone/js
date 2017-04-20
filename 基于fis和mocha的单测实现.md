@@ -123,18 +123,17 @@ test.match('**.js', {
 >  引入要测试文件,
 #### 针对mutation的测试
 ```javascript
-it('mutations-GET_DNS_RECORDS', () => {
+it('测试mutations中的SET-SITE', () => {
         // 模拟状态
         const _state = {
             all: result,
             info: {}
         };
-        
         // 应用 mutation
-        GET_DNS_RECORDS(inlineState, inlineDnsRecords.result);
+        SET-SITE(inlineState, inlineDnsRecords.result);
         // 断言结果
         expect(inlineState).to.deep.equal(_state)
-    });
+});
 ```
 
 

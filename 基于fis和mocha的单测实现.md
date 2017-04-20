@@ -1,10 +1,49 @@
 
-## Mocha（发音"摩卡"）
+## 
+Mocha [ˈmoʊkə]摩卡
+istanbul [ɪstænˈbul]伊斯坦布尔
+chai 
 Mocha是基于node的测试框架，
 
+<img src="http://cldup.com/xFVFxOioAU.svg" width = "100" height = "100" />
+<img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "90" height = "100" />
+
+Should
+```
+chai.should();
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.lengthOf(3);
+tea.should.have.property('flavors')
+  .with.lengthOf(3);
+```
+                
+Visit Should Guide →
+Expect
+```
+var expect = chai.expect;
+
+expect(foo).to.be.a('string');
+expect(foo).to.equal('bar');
+expect(foo).to.have.lengthOf(3);
+expect(tea).to.have.property('flavors')
+  .with.lengthOf(3);
+```              
+
+Assert
+```
+var assert = chai.assert;
+
+assert.typeOf(foo, 'string');
+assert.equal(foo, 'bar');
+assert.lengthOf(foo, 3)
+assert.property(tea, 'flavors');
+assert.lengthOf(tea.flavors, 3);
+```
 <img src="http://cldup.com/xFVFxOioAU.svg" width = "100" height = "100" alt="图片名称" align=center />
 <img src="https://camo.githubusercontent.com/431283cc1643d02167aac31067137897507c60fc/687474703a2f2f636861696a732e636f6d2f696d672f636861692d6c6f676f2e706e67" width = "90" height = "100" alt="图片名称" align=center />
 
+istanbul [ɪstænˈbul]伊斯坦布尔
 
 ```javascript
 

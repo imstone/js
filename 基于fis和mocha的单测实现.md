@@ -89,7 +89,7 @@ test.match('**', {
 4. 语句覆盖率（statement coverage）：是否每个语句都执行了？
 
 
-###  生成可运行的JS文件
+##  FIS3 环境配置
 #### 针对单测单独运行的FIS配置
 > 使用环境查询
 ```
@@ -103,6 +103,15 @@ test.match('**.js', {
     parser: fis.plugin('babel-5.x'),
 });
 ```
+
+#### 针对FIS的自动资源定位
+> 需要测试的JS文件和单测文件使用ES6编码，使用bable转码为es5。
+```
+test.match('**.js', {
+    parser: fis.plugin('babel-5.x'),
+});
+```
+
 ## 让JS文件可以在node下运行可
 ## 让JS文件可以在node下运行
 ```javascript运行

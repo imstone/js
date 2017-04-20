@@ -122,6 +122,7 @@ test.match('**.js', {
 ### 测试框架 Mocha和断言库chai 整合
 >  引入要测试文件,
 #### 执行每个单测前进行state和mock数据的重置
+```javascript
 let inlineData= null;
 let inlineState = null;
 beforeEach(function() {
@@ -129,7 +130,7 @@ beforeEach(function() {
     inlineData = _.cloneDeep(data);
     inlineState = _.cloneDeep(state);
 });
-
+```
 #### 针对mutation的测试
 ```javascript
 it('测试mutations中的SET-SITE', () => {
@@ -144,8 +145,12 @@ it('测试mutations中的SET-SITE', () => {
         expect(inlineState).to.deep.equal(_state)
 });
 ```
+#### 针对getters的测试
+
+#### 针对action的测试
 
 
+### 数据的mock
 
 Should
 ```

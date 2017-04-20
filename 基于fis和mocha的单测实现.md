@@ -140,7 +140,7 @@ it('测试mutations中的SET-SITE', () => {
             info: {}
         };
         // 应用 mutation
-        SET-SITE(state, result);
+        SET_SITE(inlineState, result);
         // 断言结果
         expect(inlineState).to.deep.equal(_state)
 });
